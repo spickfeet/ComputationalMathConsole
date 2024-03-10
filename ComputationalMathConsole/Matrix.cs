@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ComputationalMathConsole
 {
+    /// <summary>
+    /// Класс с матрицей
+    /// </summary>
     public class Matrix
     {
         private int _height;
@@ -15,18 +18,18 @@ namespace ComputationalMathConsole
         public int Height
         {
             get { return _height; }
-            set { _height = value; }
+            private set { _height = value; }
         }
 
         public int Width
         {
             get { return _width; }
-            set { _width = value; }
+            private set { _width = value; }
         }
         public float[,] Numbers
         {
             get { return _numbers; }
-            set
+            private set
             {
                 for (int i = 0; i < value.GetLength(0); i++)
                 {
@@ -50,6 +53,10 @@ namespace ComputationalMathConsole
             get => Numbers[i, j];
             set => Numbers[i, j] = value;
         }
+
+        /// <summary>
+        /// Выводит матрицу в консоль
+        /// </summary>
         public void Print()
         {
             for (int i = 0; i < _height; i++)
@@ -61,33 +68,6 @@ namespace ComputationalMathConsole
                 Console.WriteLine();
             }
             Console.WriteLine();
-        }
-        //public static Matrix operator +(Matrix m1, Matrix m2)
-        //{
-        //    if (m1._height != m2._height || m1._width != m2._width)
-        //    {
-        //        throw new ArgumentException("Нельзя складывать матрицы разного размера");
-        //    }
-        //    for (int i = 0; i < m1._height; i++)
-        //    {
-        //        for (int j = 0; j < m1._width; j++)
-        //        {
-        //            m1[i, j] += m2[i, j];
-        //        }
-        //    }
-        //    return m1;
-        //}
-        //public static Matrix operator *(Matrix m1, Matrix m2)
-        //{
-        //    Matrix result = new Matrix(m1._height, m1._width);
-        //    for (int i = 0; i < m1._height; i++)
-        //    {
-        //        for (int j = 0; j < m1._width; j++)
-        //        {
-
-        //        }
-        //    }
-        //    return m1;
-        //}
+        }        
     }
 }
