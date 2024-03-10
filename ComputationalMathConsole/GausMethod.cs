@@ -22,7 +22,7 @@ namespace ComputationalMathConsole
         {
             float maxValue = float.MinValue;
             int lineIndex = -1;
-            for (int j = 0; j < matrix.Width - 1; j++)
+            for (int j = columnIndex; j < matrix.Height; j++)
             {
                 if (maxValue < matrix[j, columnIndex])
                 {
@@ -56,10 +56,6 @@ namespace ComputationalMathConsole
         /// <param name="matrix"></param>
         private void DirectMainElement(Matrix matrix)
         {
-            int line = -1;
-            float maxValue = 0;
-            float temp2;
-
             for (int i = 0; i < matrix.Height - 1; i++)
             {
                 SwapLine(i, GetLineIndexWithMaxElement(i, matrix), matrix);
@@ -73,6 +69,7 @@ namespace ComputationalMathConsole
                     }
                 }
             }
+            matrix.Print();
         }
 
         /// <summary>
