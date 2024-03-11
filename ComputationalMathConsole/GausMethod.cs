@@ -58,7 +58,7 @@ namespace ComputationalMathConsole
         {
             for (int i = 0; i < matrix.Height - 1; i++)
             {
-                SwapLine(i, GetLineIndexWithMaxElement(i, matrix), matrix);
+                SwapLine(i, GetLineIndexWithMaxElementAbs(i, matrix), matrix);
                 for (int a = i + 1; a < matrix.Height; a++)
                 {
                     float coef = matrix[a, i] / matrix[i, i];
@@ -69,7 +69,6 @@ namespace ComputationalMathConsole
                     }
                 }
             }
-            matrix.Print();
         }
 
         /// <summary>
