@@ -18,15 +18,15 @@ namespace ComputationalMathConsole
         /// <param name="columnIndex"></param>
         /// <param name="matrix"></param>
         /// <returns></returns>
-        private int GetLineIndexWithMaxElement(int columnIndex, Matrix matrix)
+        private int GetLineIndexWithMaxElementAbs(int columnIndex, Matrix matrix)
         {
-            float maxValue = float.MinValue;
+            double maxValue = 0;
             int lineIndex = -1;
             for (int j = columnIndex; j < matrix.Height; j++)
             {
-                if (maxValue < matrix[j, columnIndex])
+                if (maxValue < Math.Abs((double)matrix[j, columnIndex]))
                 {
-                    maxValue = matrix[j, columnIndex];
+                    maxValue = Math.Abs((double)matrix[j, columnIndex]);
                     lineIndex = j;
                 }
             }
