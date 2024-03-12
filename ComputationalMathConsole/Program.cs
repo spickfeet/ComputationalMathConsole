@@ -35,6 +35,12 @@ namespace ComputationalMathConsole
                 IsSuccess = false;
             }
 
+            if(matrixHeight <2 ||  matrixWidth <3) 
+            {
+                Console.WriteLine($"Матрицу размера {matrixHeight} на {matrixWidth} программа не посчитает");
+                IsSuccess = false;
+            }
+
             if (IsSuccess)
             {
                 Console.WriteLine();
