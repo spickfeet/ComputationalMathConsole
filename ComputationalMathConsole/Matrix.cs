@@ -69,5 +69,7 @@ namespace ComputationalMathConsole
             }
             Console.WriteLine();
         }        
+
+        
     }
 }
