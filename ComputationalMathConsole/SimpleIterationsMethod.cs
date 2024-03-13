@@ -214,24 +214,7 @@ namespace ComputationalMathConsole
         }
 
 
-        public bool IsRightMatrix()
-        {
-            bool isSuccess = true;
-            for (int i = 0; i < Matrix.Height; i++)
-            {
-                for (int j = 0; j < Matrix.Width; j++)
-                    if (i == j && Matrix[i, j] == 0)
-                    {
-                        isSuccess = false;
-                        break;
-                    }
-                if (!isSuccess)
-                    break;
-            }
-            if (isSuccess)
-                return true;
-            return false;
-        }
+        
 
         
     }
