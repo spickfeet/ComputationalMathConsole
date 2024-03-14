@@ -78,6 +78,9 @@ namespace ComputationalMathConsole
                     }
                 }
 
+
+
+
                 Console.WriteLine("\nМЕТОДЫ");
                 Console.WriteLine("1 - метод Гаусса без выбора главного элемента");
                 Console.WriteLine("2 - метод Гаусса с выбором главного элемента");
@@ -99,8 +102,14 @@ namespace ComputationalMathConsole
                         case 1:
                             Matrix matrix1 = new(matrixNumbers);
                             GausMethod gausMethod1 = new();
-                            Console.WriteLine("Рузультат без выбора главного элемента");
-                            PrintResult(gausMethod1.GetResult(matrix1));
+
+                            if (!IsRightMatrix(matrix1))
+                                Console.WriteLine("Метод не применим: ноль на главной диагонали");
+                            else
+                            { 
+                                Console.WriteLine("Рузультат без выбора главного элемента");
+                                PrintResult(gausMethod1.GetResult(matrix1));
+                            }
                             break;
                         case 2:
                             Matrix matrix2 = new(matrixNumbers);
@@ -112,7 +121,7 @@ namespace ComputationalMathConsole
                             Matrix matrix4 = new(matrixNumbers);
                             SimpleIterationsMethod simpleIterationsMethod = new(matrix4);
 
-                            if (!simpleIterationsMethod.IsRightMatrix())
+                            if (!IsRightMatrix(matrix4))
                                 Console.WriteLine("Метод не применим: ноль на главной диагонали");
                             else if (!simpleIterationsMethod.IsIterationsConverge())
                                 Console.WriteLine("Метод не применим: не выполнено условие сходимости процесса итерации");
@@ -131,14 +140,19 @@ namespace ComputationalMathConsole
                             Matrix matrix3 = new(matrixNumbers);
                             TridiagonalMatrixAlgorithm tridiagonalMatrixAlgorithm = new(matrix3);
 
-                            Console.WriteLine("Ответы: ");
-                            if (tridiagonalMatrixAlgorithm.Answers == null || tridiagonalMatrixAlgorithm.Answers.Length == 0)
-                            {
-                                Console.WriteLine("Матрица не трёхдиагональная. Метод не применяется");
-                                return;
-                            }
+                            if (!IsRightMatrix(matrix3))
+                                Console.WriteLine("Метод не применим: ноль на главной диагонали");
+                            else
+                            { 
+                                Console.WriteLine("Ответы: ");
+                                if (tridiagonalMatrixAlgorithm.Answers == null || tridiagonalMatrixAlgorithm.Answers.Length == 0)
+                                {
+                                    Console.WriteLine("Матрица не трёхдиагональная. Метод не применяется");
+                                    return;
+                                }
 
-                            PrintResult(tridiagonalMatrixAlgorithm.Answers);
+                                PrintResult(tridiagonalMatrixAlgorithm.Answers);
+                            }
                             break;
                     }
 
@@ -156,6 +170,27 @@ namespace ComputationalMathConsole
                 }
             }
         }
+
+        public static bool IsRightMatrix(Matrix matrix)
+        {
+            bool isSuccess = true;
+            for (int i = 0; i < matrix.Height; i++)
+            {
+                for (int j = 0; j < matrix.Width; j++)
+                    if (i == j && matrix[i, j] == 0)
+                    {
+                        isSuccess = false;
+                        break;
+                    }
+                if (!isSuccess)
+                    break;
+            }
+            if (isSuccess)
+                return true;
+            return false;
+        }
+
+
         static private void PrintResult(float[] results)
         {
             for (int i = 0; i < results.Length; i++)
