@@ -213,9 +213,5 @@ namespace ComputationalMathConsole
             return true;
         }
 
-
-        
-
-        
     }
 }

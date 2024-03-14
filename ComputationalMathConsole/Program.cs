@@ -114,13 +114,8 @@ namespace ComputationalMathConsole
                         case 2:
                             Matrix matrix2 = new(matrixNumbers);
                             GausMethod gausMethod2 = new();
-                            if (!IsRightMatrix(matrix2))
-                                Console.WriteLine("Метод не применим: ноль на главной диагонали");
-                            else
-                            {
-                                Console.WriteLine("Рузультат с выбором главного элемента");
-                                PrintResult(gausMethod2.GetResultMainElement(matrix2));
-                            }
+                            Console.WriteLine("Рузультат с выбором главного элемента");
+                            PrintResult(gausMethod2.GetResultMainElement(matrix2));
                             break;
                         case 3:
                             Matrix matrix4 = new(matrixNumbers);
